@@ -229,7 +229,7 @@
                     </div>
                 </section>
                 <div data-element="modal" class="inset-0 w-full h-full fixed z-50 scale-0 transition-transform duration-500 ease-in bg-black/40 flex items-center justify-center">
-                    <div class="lg:w-3/4 w-10/12 bg-white h-3/4 overflow-y-scroll flex flex-col pb-8">
+                    <div data-element="modal-container" class="lg:w-3/4 w-10/12 bg-white h-3/4 overflow-y-scroll flex flex-col pb-8">
                         <div class="self-end">
                             <svg class="w-6 h-6 mt-6 mr-6 cursor-pointer" data-element="close-modal" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <g data-name="Layer 2">
@@ -251,7 +251,9 @@
                                         class="border border-gray-300 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-primary"
                                         placeholder="Enter Booking ID" disabled/>
                                 </label>
-                                <label class="flex flex-col gap-2">
+                                <label class="flex flex-col gap-2"
+                                data-element="booking-type-container"
+                                >
                                     <span class="text-sm">Type</span>
                                     <select
                                         id="booking-type"
@@ -260,20 +262,20 @@
                                         <option value="Car Rental">Car Rental</option>
                                     </select>
                                 </label>
-                                <label class="flex flex-col gap-2">
+                                <label class="flex flex-col gap-2" data-element="booking-car-container" >
                                     <span class="text-sm">Car</span>
                                     <input
                                         id="booking-car"
                                         class="border border-gray-300 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-primary" />
                                 </label>
-                                <label class="flex flex-col gap-2">
+                                <label class="flex flex-col gap-2" data-element="start-date-container">
                                     <span class="text-sm">Start Date</span>
                                     <input type="date"
                                     id="booking-start-date"
                                         class="border border-gray-300 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-primary"
                                         placeholder="Enter Start Date" />
                                 </label>
-                                <label class="flex flex-col gap-2">
+                                <label class="flex flex-col gap-2" data-element="end-date-container"> 
                                     <span class="text-sm">End Date</span>
                                     <input type="date"
                                     id="booking-end-date"
