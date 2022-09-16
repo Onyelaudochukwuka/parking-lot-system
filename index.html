@@ -8,16 +8,15 @@
     <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
-    <section class="container">
+    <section class="">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 min-h-screen">
-            <nav class="lg:col-span-3 col-span-1 top-0 h-full bottom-0  shadow-xl shadow-blue-500/75">
-                <div class="lg:sticky relative top-0  bottom-0 ">
-                    <div class="flex flex-col justify-center pt-8">
+            <nav class="lg:col-span-3 col-span-1 top-0 lg:h-full lg:bottom-0 h-fit py-4  w-full shadow-xl shadow-blue-500/75">
+                    <div class="flex lg:flex-col justify-center pt-8 items-center lg:items-start gap-8">
                             <header class="w-fit mx-auto">
                                 <p class="font-bold text-xl">Parking Lot</p>
                             </header>
                             <div>
-                                <ul class="mt-8">
+                                <ul class=" flex lg:flex-col">
                                     <li class="flex items-center py-2 px-4 rounded-lg">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4l.317 12a2 2 0 002 2h13.366a2 2 0 002-2L21 4H3zm0 0h18M5 15h.01M17 15h.01M9 10h.01M15 10h.01" />
@@ -56,41 +55,97 @@
 
                             </div>
                     </div>
-                </div>
             </nav>
             
             <div class="lg:col-span-9 col-span-1 ">
                 <div class="flex justify-between items-center">
-                    <h1 class="basis-1/5">All Bookings</h1>
+                    <h1 class="basis-1/5 text-xl font-bold">All Bookings</h1>
                     <div class="py-4 basis-3/4 flex justify-around">
-                        <div class="bg-white ring-2 ring-blue-700 p-3 py-2 rounded-sm">
-                            <span>Status</span>
-                            <input type="checkbox" class="peer"/>
-                        <div class="flex">
-                            <span>
-                                <label for="approved" class="ml-2 text-sm text-gray-600">
-                                    <input type="checkbox" id="approved"/>
+                        <div class="bg-white ring-2 relative group p-3 py-2 w-36 rounded-sm flex justify-between items-center">
+                            <span class="text-gray-300">Status</span>
+                            <input type="checkbox" id="checkbox" class="peer hidden"/>
+                            <label for="checkbox" class="peer-checked:rotate-180 rotate-0 transition-transform duration-500 ease-in">
+                                <svg version="1.1" class="h-3 w-3 text-black fill-black"  id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                    y="0px" viewBox="0 0 20.633 20.633" style="enable-background:new 0 0 20.633 20.633;" xml:space="preserve">
+                                    <g>
+                                        <path d="M10.79,15.617l9.648-9.646c0.133-0.131,0.195-0.301,0.195-0.473s-0.062-0.344-0.195-0.473l-0.012-0.012
+                                		c-0.125-0.127-0.295-0.195-0.472-0.195h-4.682c-0.18,0-0.348,0.068-0.473,0.195l-4.48,4.479l-4.48-4.479
+                                		C5.711,4.886,5.54,4.818,5.366,4.818H0.684c-0.182,0-0.349,0.068-0.475,0.195L0.196,5.025C0.068,5.148,0,5.322,0,5.498
+                                		c0,0.176,0.068,0.348,0.196,0.473l9.648,9.646C10.108,15.88,10.53,15.88,10.79,15.617z" />
+                                        <g>
+                                </svg>
+
+                            </label>
+                        <div class="flex flex-col absolute top-12 min-w-36 gap-3 peer-checked:scale-100 bg-white shadow-xl p-6 px-8 scale-0 origin-top-left transition-transform duration-500 ease-in left-0">
+                            <span class="flex justify-between items-center gap-6">
+                                <label for="approved" class="ml-2 text-sm text-gray-600 flex gap-4">
+                                    <input type="checkbox" id="approved" class="accent-blue-700"/>
                                     <p>Approved</p>
                                 </label>
-                                
+                                    <p class="text-gray-300 text-xs bg-gray-100 w-5 flex items-center justify-center h-5 rounded-full">12</p>
                             </span>
-                            <span>
-                                <label for="declined" class="ml-2 text-sm text-gray-600">
-                                    <input type="checkbox" id="declined"/>
+                            <span class="flex justify-between items-center gap-6">
+                                <label for="declined" class="ml-2 text-sm text-gray-600 flex gap-4">
+                                    <input type="checkbox" id="declined" class="accent-blue-700"/>
                                     <p>Declined</p>
                                 </label>
+                                    <p class="text-gray-300 text-xs bg-gray-100 w-5 flex items-center justify-center h-5 rounded-full">7</p>
                             </span>
-                                <label for="processing" class="ml-2 text-sm text-gray-600">
-                                    <input type="checkbox" id="processing"/>
+                                <label for="processing" class="ml-2 text-sm text-gray-600 flex gap-4">
+                                    <input type="checkbox" id="processing" class="accent-blue-700"/>
                                     <p>Processing</p>
                                 </label>
-                                <label for="paused" class="ml-2 text-sm text-gray-600">
-                                    <input type="checkbox" id="paused"/>
+                                <label for="paused" class="ml-2 text-sm text-gray-600 flex gap-4">
+                                    <input type="checkbox" id="paused" class="accent-blue-700"/>
                                     <p>Paused</p>
                                 </label>
                                 
                         </div>
                         </div>
+
+
+                        <div class="bg-white shadow-md relative p-3 py-2 w-36 rounded-sm flex justify-between items-center">
+                            <span class="text-gray-300">Types</span>
+                            <input type="checkbox" id="typecheckbox" class="peer hidden"/>
+                            <label for="typecheckbox" class="peer-checked:rotate-180 rotate-0 transition-transform duration-500 ease-in">
+                                <svg version="1.1" class="h-3 w-3 text-black fill-black"  id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                    y="0px" viewBox="0 0 20.633 20.633" style="enable-background:new 0 0 20.633 20.633;" xml:space="preserve">
+                                    <g>
+                                        <path d="M10.79,15.617l9.648-9.646c0.133-0.131,0.195-0.301,0.195-0.473s-0.062-0.344-0.195-0.473l-0.012-0.012
+                                		c-0.125-0.127-0.295-0.195-0.472-0.195h-4.682c-0.18,0-0.348,0.068-0.473,0.195l-4.48,4.479l-4.48-4.479
+                                		C5.711,4.886,5.54,4.818,5.366,4.818H0.684c-0.182,0-0.349,0.068-0.475,0.195L0.196,5.025C0.068,5.148,0,5.322,0,5.498
+                                		c0,0.176,0.068,0.348,0.196,0.473l9.648,9.646C10.108,15.88,10.53,15.88,10.79,15.617z" />
+                                        <g>
+                                </svg>
+
+                            </label>
+                        <div class="flex flex-col absolute top-12 min-w-36 gap-3 peer-checked:scale-100 bg-white shadow-xl p-6 px-8 scale-0 origin-top-left transition-transform duration-500 ease-in left-0">
+                            <span class="flex justify-between items-center gap-6">
+                                <label for="approved" class="ml-2 text-sm text-gray-600 flex gap-4">
+                                    <input type="checkbox" id="approved" class="accent-blue-700"/>
+                                    <p>Approved</p>
+                                </label>
+                                    <p class="text-gray-300 text-xs bg-gray-100 w-5 flex items-center justify-center h-5 rounded-full">12</p>
+                            </span>
+                            <span class="flex justify-between items-center gap-6">
+                                <label for="declined" class="ml-2 text-sm text-gray-600 flex gap-4">
+                                    <input type="checkbox" id="declined" class="accent-blue-700"/>
+                                    <p>Declined</p>
+                                </label>
+                                    <p class="text-gray-300 text-xs bg-gray-100 w-5 flex items-center justify-center h-5 rounded-full">7</p>
+                            </span>
+                                <label for="processing" class="ml-2 text-sm text-gray-600 flex gap-4">
+                                    <input type="checkbox" id="processing" class="accent-blue-700"/>
+                                    <p>Processing</p>
+                                </label>
+                                <label for="paused" class="ml-2 text-sm text-gray-600 flex gap-4">
+                                    <input type="checkbox" id="paused" class="accent-blue-700"/>
+                                    <p>Paused</p>
+                                </label>
+                                
+                        </div>
+                        </div>
+                        <button class="px-6 py-4 bg-[] text-white">Add Bookings</button>
                     </div>
                 </div>
             </div>
