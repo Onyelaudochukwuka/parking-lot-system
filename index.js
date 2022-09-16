@@ -1,6 +1,6 @@
 const helpers = {};
 
-helpers.Book = (strLength) => {
+helpers.BookCode = (strLength) => {
   strLength = typeof strLength == "number" && strLength > 0 ? strLength : false;
   if (strLength) {
     // Define all the possible characters that can go into a string;
@@ -30,4 +30,23 @@ helpers.Book = (strLength) => {
     return false;
   }
 };
-console.log(helpers.Book(5));
+helpers.getElement = (attribute) => document.querySelector(`[data-element = ${attribute}]`);
+helpers.getElementById = (attribute) => document.querySelector(`#${attribute}`);
+const bookButton = helpers.getElement("book-button");
+const modal = helpers.getElement("modal");
+const closeModal = helpers.getElement("close-modal");
+const bookingId = helpers.getElementById("booking-id");
+const bookingType = helpers.getElementById("booking-type");
+const bookingCar = helpers.getElementById("booking-car");
+const bookingStartDate = helpers.getElementById("booking-start-date");
+const bookingEndDate = helpers.getElementById("booking-end-date");
+const tableContainer = helpers.getElement("table-container");
+bookButton.addEventListener("click", () => {
+    modal.classList.toggle("scale-100");
+    modal.classList.toggle("scale-0");
+    bookingId.value = helpers.BookCode(5);
+});
+closeModal.addEventListener("click", () => {
+    modal.classList.toggle("scale-100");
+    modal.classList.toggle("scale-0");
+});
