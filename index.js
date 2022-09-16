@@ -41,6 +41,7 @@ const bookingCar = helpers.getElementById("booking-car");
 const bookingStartDate = helpers.getElementById("booking-start-date");
 const bookingEndDate = helpers.getElementById("booking-end-date");
 const tableContainer = helpers.getElement("table-container");
+const submitButton = helpers.getElement("submit-button");
 bookButton.addEventListener("click", () => {
     modal.classList.toggle("scale-100");
     modal.classList.toggle("scale-0");
