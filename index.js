@@ -41,7 +41,10 @@ helpers.createBooking = ({ id, type, status, car, startDate, endDate }) => {
                                 class="${type === "Car Rental" ? "approved" : status === "Processing" ? "processing" : status === "Secured" ? "secured" : ""} self-start lg:w-fit px-5 py-1 flex items-center justify-center rounded-full font-semibold w-max">${status}</span>
                         </p>
                         <p class="self-start basis-1/6 align-middle my-auto min-w-max">${type}</p>
-                        <p class="self-start basis-1/6 align-middle my-auto min-w-max">${car}</p>
+                        <p class="self-start basis-1/6 align-middle my-auto min-w-max flex flex-col items-center justify-start">
+                            <span class="self-start">${car.name}</span>
+                            <span class="text-[10px] self-start">${car.type}</span>
+                        </p>
                         <p class="self-start basis-1/6 align-middle my-auto min-w-max">${startDate}</p>
                         <p class="self-start basis-1/6 align-middle my-auto min-w-max">${endDate}</p>
     `
@@ -53,7 +56,8 @@ helpers.createError = (str) => {
     p.innerText = str;
     return p;
 }
-let bookings = [];
+let largeCarBookings = [];
+let smallCarBookings = [];
 const bookButton = helpers.getElement("book-button");
 const modal = helpers.getElement("modal");
 const closeModal = helpers.getElement("close-modal");
@@ -69,6 +73,7 @@ const startDateContainer = helpers.getElement("start-date-container");
 const endDateContainer = helpers.getElement("end-date-container");
 const bookingTypeContainer = helpers.getElement("booking-type-container");
 const bookingCarContainer = helpers.getElement("booking-car-container");
+const carTypeCheckbox = helpers.getElementById("car-type-checkbox");
 bookButton.addEventListener("click", () => {
     modal.classList.toggle("scale-100");
     modal.classList.toggle("scale-0");
@@ -82,17 +87,36 @@ closeModal.addEventListener("click", () => {
 submitButton.addEventListener("click", () => { 
     if (!!bookingId.value && !!bookingType.value && !!bookingCar.value && !!bookingStartDate.value && !!bookingEndDate.value) {
         if (bookingStartDate.value < bookingEndDate.value) {
-            if (bookingStartDate.value > new Date().toISOString().split("T")[0]) {
+            if (bookingStartDate.value >= new Date().toISOString().split("T")[0]) {
+                if (carTypeCheckbox.checked) {
                     const booking = {
                         id: bookingId.value,
                         type: bookingType.value,
-                        status: bookingType.value === "Car Rental" ?  "Coming Soon" : bookings.length > 20 ? "Processing" : "Secured",
-                        car: bookingCar.value,
+                        status: bookingType.value === "Car Rental" ? "Coming Soon" : largeCarBookings.length > 8 ? "Processing" : "Secured",
+                        car: {
+                            name: bookingCar.value,
+                            type: "Large Car"
+                        },
                         startDate: bookingStartDate.value,
                         endDate: bookingEndDate.value
                     };
-                    bookings = [...bookings, booking];
-                helpers.createBooking(booking);
+                    largeCarBookings = [...largeCarBookings, booking];
+                    helpers.createBooking(booking);
+                } else {
+                    const booking = {
+                        id: bookingId.value,
+                        type: bookingType.value,
+                        status: bookingType.value === "Car Rental" ? "Coming Soon" : smallCarBookings.length > 12 ? "Processing" : "Secured",
+                        car: {
+                            name: bookingCar.value,
+                            type: "Small Car"
+                        },
+                        startDate: bookingStartDate.value,
+                        endDate: bookingEndDate.value
+                    };
+                    smallCarBookings = [...smallCarBookings, booking];
+                    helpers.createBooking(booking);
+                }
                 modal.classList.toggle("scale-100");
                 modal.classList.toggle("scale-0");
                 bookingId.value = "";
@@ -102,7 +126,7 @@ submitButton.addEventListener("click", () => {
                 bookingEndDate.value = "";
                 modalContainer.scrollTo(0, 0);
             } else {
-                const startDateContainerMessage = helpers.createError("Start date must be greater than today's date");
+                const startDateContainerMessage = helpers.createError("Start date must be greater or equals to today's date");
                 startDateContainer.appendChild(startDateContainerMessage);
                 setTimeout(() => {
                     startDateContainerMessage.classList.add("scale-0");
