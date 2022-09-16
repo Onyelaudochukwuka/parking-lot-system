@@ -703,9 +703,6 @@ video {
   width: 75%;
 }
 
-.min-w-\[\] {
-  min-width: ;
-}
 
 .min-w-\[100px\] {
   min-width: 100px;
