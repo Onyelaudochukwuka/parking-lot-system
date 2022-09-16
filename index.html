@@ -201,7 +201,10 @@
                                 class="processing self-start lg:w-fit px-5 py-1 flex items-center justify-center rounded-full font-semibold w-max">Processing</span>
                         </p>
                         <p class="self-start basis-1/6 align-middle my-auto min-w-max">Parking Space</p>
-                        <p class="self-start basis-1/6 align-middle my-auto min-w-max">Hyundai 2022</p>
+                        <p class="self-start basis-1/6 align-middle my-auto min-w-max flex flex-col items-center justify-start">
+                            <span class="self-start">Hyundai 2022</span>
+                            <span class="text-[10px] self-start">Large Car</span>
+                        </p>
                         <p class="self-start basis-1/6 align-middle my-auto min-w-max">2022-09-16</p>
                         <p class="self-start basis-1/6 align-middle my-auto min-w-max">2022-10-5</p>
                     </div>
@@ -212,7 +215,10 @@
                                 class="self-start lg:w-fit w-max px-5 py-1 flex items-center justify-center rounded-full font-semibold approved">Coming
                                 Soon</span></p>
                         <p class="self-start basis-1/6 align-middle min-w-max my-auto">Car Rental</p>
-                        <p class="self-start basis-1/6 align-middle min-w-max my-auto">Toyota 2022</p>
+                        <p class="self-start basis-1/6 align-middle my-auto min-w-max flex flex-col items-center justify-start">
+                            <span class="self-start">Toyota 2022</span>
+                            <span class="text-[10px] self-start">Small Car</span>
+                        </p>
                         <p class="self-start basis-1/6 align-middle min-w-max my-auto">2022-09-16</p>
                         <p class="self-start basis-1/6 align-middle min-w-max my-auto">2022-10-15</p>
                     </div>
@@ -223,7 +229,10 @@
                                 class="secured self-start w-max lg:w-fit px-5 py-1 flex items-center justify-center rounded-full font-semibold">Secured</span>
                         </p>
                         <p class="self-start basis-1/6 min-w-max align-middle my-auto">Parking Space</p>
-                        <p class="self-start basis-1/6 min-w-max align-middle my-auto">Toyota 2022</p>
+                        <p class="self-start basis-1/6 align-middle my-auto min-w-max flex flex-col items-center justify-start">
+                            <span class="self-start">Toyota 2022</span>
+                            <span class="text-[10px] self-start">Small Car</span>
+                        </p>
                         <p class="self-start basis-1/6 min-w-max align-middle my-auto">2022-09-16</p>
                         <p class="self-start basis-1/6 min-w-max align-middle my-auto">2022-10-8</p>
                     </div>
@@ -267,6 +276,10 @@
                                     <input
                                         id="booking-car"
                                         class="border border-gray-300 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-primary" />
+                                        <label class="flex gap-2">
+                                            <input type="checkbox" id="car-type-checkbox">
+                                            <span>Large car</span>
+                                        </label>
                                 </label>
                                 <label class="flex flex-col gap-2" data-element="start-date-container">
                                     <span class="text-sm">Start Date</span>
