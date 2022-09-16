@@ -22,3 +22,14 @@ select {
    background-position: center right 15px;
    background-size: 25px;
 }
+/* Language: css */
+/* webkit-scrollbar styling */
+::-webkit-scrollbar {
+  width: 2px;
+  height: 0.4px;
+  background-color: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.3);
+  border-radius: 10px;
+}
