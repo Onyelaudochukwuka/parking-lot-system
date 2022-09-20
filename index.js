@@ -34,6 +34,24 @@ helpers.getElement = (attribute) => document.querySelector(`[data-element = ${at
 helpers.getElementById = (attribute) => document.querySelector(`#${attribute}`);
 helpers.createBooking = ({ id, type, status, car, startDate, endDate }) => { 
     const div = document.createElement("div");
+    div.attributes = { id: id };
+    const button = document.createElement('button');
+    button.innerHTML = `<svg class="w-6 h-6" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 512 512">
+        <path d="M256,0C114.844,0,0,114.844,0,256s114.844,256,256,256s256-114.844,256-256S397.156,0,256,0z M358.625,313.375  c12.5,12.492,12.5,32.758,0,45.25C352.383,364.875,344.188,368,336,368s-16.383-3.125-22.625-9.375L256,301.25l-57.375,57.375  C192.383,364.875,184.188,368,176,368s-16.383-3.125-22.625-9.375c-12.5-12.492-12.5-32.758,0-45.25L210.75,256l-57.375-57.375  c-12.5-12.492-12.5-32.758,0-45.25c12.484-12.5,32.766-12.5,45.25,0L256,210.75l57.375-57.375c12.484-12.5,32.766-12.5,45.25,0  c12.5,12.492,12.5,32.758,0,45.25L301.25,256L358.625,313.375z" />
+    </svg>`;
+    let carPrice = 2;
+    if (car.type === "Large Car") {
+        carPrice = 3.5;
+    }
+    button.addEventListener('click', () => {
+        let priceIncurred = moment(Date.now()).diff(moment(startDate), 'minute') * carPrice;
+        priceModal.classList.toggle('scale-100');
+        priceLabel.innerHTML = `Price incurred: <s>N</s>${priceIncurred}`;
+    });
+    pricePayment.addEventListener('click', () => {
+        priceModal.classList.toggle('scale-100');
+        console.log(div.attributes.id);
+    });
     div.className = "w-full shadow-lg overflow-x-scroll gap-6 shadow-gray-300/25 h-auto py-6 flex justify-between items-center rounded-md lg:text-sm text-xs px-6 text-gray-600";
     div.innerHTML = `
                         <p class="self-start basis-1/6 align-middle my-auto min-w-max">${id}</p>
@@ -140,14 +158,20 @@ helpers.createBooking = ({ id, type, status, car, startDate, endDate }) => {
 <span class="text-[10px]">${car.type}</span></span>
                         </p>
                         <p class="self-start align-middle my-auto min-w-max">${moment(startDate).fromNow()}</p>
-                        <button><svg class="w-6 h-6" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 512 512">
-  <path d="M256,0C114.844,0,0,114.844,0,256s114.844,256,256,256s256-114.844,256-256S397.156,0,256,0z M358.625,313.375  c12.5,12.492,12.5,32.758,0,45.25C352.383,364.875,344.188,368,336,368s-16.383-3.125-22.625-9.375L256,301.25l-57.375,57.375  C192.383,364.875,184.188,368,176,368s-16.383-3.125-22.625-9.375c-12.5-12.492-12.5-32.758,0-45.25L210.75,256l-57.375-57.375  c-12.5-12.492-12.5-32.758,0-45.25c12.484-12.5,32.766-12.5,45.25,0L256,210.75l57.375-57.375c12.484-12.5,32.766-12.5,45.25,0  c12.5,12.492,12.5,32.758,0,45.25L301.25,256L358.625,313.375z"/>
-</svg>
-</button>
-    ` 
+    `
+        if (status === "Secured") {
+            div.appendChild(button);
+        }
+
     }, 3000);
+    if (status === "Secured") {
+        div.appendChild(button);
+    }
     tableContainer.appendChild(div);
 };
+function close() {
+    console.log('close');
+}
 helpers.createError = (str) => {
     const p = document.createElement("p");
     p.className = "text-xs text-red-400 transition-transform origin-left duration-500 tracking-wider";
@@ -157,6 +181,9 @@ helpers.createError = (str) => {
 let largeCarBookings = [];
 let smallCarBookings = [];
 const bookButton = helpers.getElement("book-button");
+const priceLabel = helpers.getElement("price-label");
+const priceModal = helpers.getElement("price-modal");
+const pricePayment = helpers.getElement("price-payment");
 const modal = helpers.getElement("modal");
 const closeModal = helpers.getElement("close-modal");
 const bookingId = helpers.getElementById("booking-id");
