@@ -86,9 +86,63 @@ helpers.createBooking = ({ id, type, status, car, startDate, endDate }) => {
                             }
 <span class="text-[10px]">${car.type}</span></span>
                         </p>
-                        <p class="self-start basis-1/6 align-middle my-auto min-w-max">${startDate}</p>
-                        <p class="self-start basis-1/6 align-middle my-auto min-w-max">${endDate}</p>
+                        <p class="self-start basis-1/6 align-middle my-auto min-w-max">${moment(startDate).fromNow() }</p>
     `
+    setInterval(() => {
+        div.innerHTML = `
+                        <p class="self-start basis-1/6 align-middle my-auto min-w-max">${id}</p>
+                        <p class="self-start basis-1/6 align-middle my-auto min-w-max"><span
+                                class="${type === "Car Rental" ? "approved" : status === "Processing" ? "processing" : status === "Secured" ? "secured" : ""} self-start lg:w-fit px-5 py-1 flex items-center justify-center rounded-full font-semibold w-max">${status}</span>
+                        </p>
+                        <p class="self-start basis-1/6 align-middle my-auto min-w-max">${type}</p>
+                        <p class="self-start basis-1/6 align-middle my-auto min-w-max flex flex-col items-center justify-start">
+                            <span class="self-start">${car.name}</span>
+                            <span class=" self-start flex gap-1 items-center">
+                            ${car.type === "Large Car"
+                ?
+                `<svg version="1.1" id="Capa_1" class="w-3 h-3 fill-black text-black" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                y="0px" viewBox="0 0 117.135 117.135" style="enable-background:new 0 0 117.135 117.135;" xml:space="preserve">
+                                <g>
+                                    <path style="fill:#000000;" d="M24.281,71.674c-5.78,0-10.483,4.702-10.483,10.482c0,5.779,4.702,10.482,10.483,10.482
+                            		c5.78,0,10.483-4.703,10.483-10.482C34.764,76.376,30.061,71.674,24.281,71.674z M24.281,90.054c-4.354,0-7.897-3.543-7.897-7.897
+                            		s3.542-7.897,7.897-7.897s7.897,3.543,7.897,7.897S28.635,90.054,24.281,90.054z" />
+                                    <path style="fill:#000000;"
+                                        d="M106.651,71.674c-5.78,0-10.482,4.702-10.482,10.482c0,5.779,4.702,10.482,10.482,10.482
+                            		c5.78,0,10.483-4.703,10.483-10.482C117.135,76.376,112.432,71.674,106.651,71.674z M106.651,90.054
+                            		c-4.354,0-7.897-3.543-7.897-7.897s3.543-7.897,7.897-7.897c4.355,0,7.897,3.543,7.897,7.897S111.006,90.054,106.651,90.054z" />
+                                    <path style="fill:#000000;" d="M36.76,73.873v9.53h56.683c-0.109-0.667-0.181-1.346-0.181-2.042c0-2.807,0.934-5.393,2.491-7.488
+                            		H36.76z" />
+                                    <path style="fill:#000000;" d="M23.486,68.766c2.654,0,5.115,0.83,7.148,2.237V45.735H13.78C0,63.05,13.78,45.735,0,63.05v20.353
+                            		h11.073c-0.109-0.667-0.181-1.346-0.181-2.042C10.892,74.417,16.542,68.766,23.486,68.766z M16.196,49.214l5.293,0.298v13.24H5.422
+                            		L16.196,49.214z" />
+                                    <circle style="fill:#000000;" cx="24.281" cy="82.156" r="5.172" />
+                                    <circle style="fill:#000000;" cx="106.651" cy="82.156" r="5.172" />
+                                    <path style="fill:#000000;"
+                                        d="M114.365,24.496H36.76v43.568h77.605V24.496z M56.762,55.896h-8V30.973h8V55.896z M71.963,55.896
+                            		h-8.001V30.973h8.001V55.896z M87.164,55.896h-8.001V30.973h8.001V55.896z M102.365,55.896h-8.001V30.973h8.001V55.896z" />
+                                </g>
+                            </svg>`
+                : `<svg version="1.1" class="w-3 h-3 fill-black text-black" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                y="0px" viewBox="0 0 252.811 252.811" style="enable-background:new 0 0 252.811 252.811;" xml:space="preserve">
+                                <path d="M246.824,108.485l-3.162-4.442c-3.033-4.262-7.347-11.565-9.615-16.279L218.451,55.35
+                            	c-2.665-5.541-9.569-9.881-15.719-9.881H94.896c-6.051,0-13.361,3.983-16.644,9.068l-28.7,44.476
+                            	c-2.594,4.02-8.722,8.328-13.383,9.408l-25.153,5.829C4.942,115.657,0,121.876,0,128.112v43.845c0,6.47,5.264,11.734,11.734,11.734
+                            	h18.743c3.976,13.648,16.589,23.652,31.502,23.652c14.914,0,27.527-10.004,31.503-23.652h60.848
+                            	c3.976,13.648,16.589,23.652,31.503,23.652c14.913,0,27.526-10.004,31.502-23.652h23.742c6.471,0,11.734-5.264,11.734-11.734
+                            	v-44.734C252.811,121.433,250.182,113.202,246.824,108.485z M61.979,190.828c-9.001,0-16.299-7.299-16.299-16.3
+                            	c0-9.002,7.298-16.299,16.299-16.299c9.002,0,16.3,7.297,16.3,16.299C78.279,183.529,70.981,190.828,61.979,190.828z
+                            	 M154.981,108.434H72.756c-4.287,0-5.967-2.994-3.732-6.653l20.794-34.059c2.234-3.659,7.57-6.653,11.857-6.653h53.307V108.434z
+                            	 M185.833,190.828c-9.002,0-16.3-7.299-16.3-16.3c0-9.002,7.298-16.299,16.3-16.299c9.001,0,16.299,7.297,16.299,16.299
+                            	C202.132,183.529,194.834,190.828,185.833,190.828z M209.602,108.434h-35.863V61.068h20.346c4.287,0,8.887,3.333,10.222,7.408
+                            	l10.664,32.55C216.306,105.1,213.89,108.434,209.602,108.434z" />
+                            </svg>`
+            }
+<span class="text-[10px]">${car.type}</span></span>
+                        </p>
+                        <p class="self-start basis-1/6 align-middle my-auto min-w-max">${moment(startDate).fromNow()}</p>
+    ` 
+        console.log("change")
+    }, 3000);
     tableContainer.appendChild(div);
 };
 helpers.createError = (str) => {
@@ -105,8 +159,6 @@ const closeModal = helpers.getElement("close-modal");
 const bookingId = helpers.getElementById("booking-id");
 const bookingType = helpers.getElementById("booking-type");
 const bookingCar = helpers.getElementById("booking-car");
-const bookingStartDate = helpers.getElementById("booking-start-date");
-const bookingEndDate = helpers.getElementById("booking-end-date");
 const tableContainer = helpers.getElement("table-container");
 const submitButton = helpers.getElement("submit-button");
 const modalContainer = helpers.getElement("modal-container");
@@ -115,6 +167,16 @@ const endDateContainer = helpers.getElement("end-date-container");
 const bookingTypeContainer = helpers.getElement("booking-type-container");
 const bookingCarContainer = helpers.getElement("booking-car-container");
 const carTypeCheckbox = helpers.getElementById("car-type-checkbox");
+const defaultData = [{
+    id: "BHI31-2022",
+    type: "Parking Space",
+    status: "Processing",
+    car: {
+        name: "Hyundai 2022",
+        type: "Small Car"
+    },
+    startDate: Date.now()
+}]
 bookButton.addEventListener("click", () => {
     modal.classList.toggle("scale-100");
     modal.classList.toggle("scale-0");
@@ -126,9 +188,7 @@ closeModal.addEventListener("click", () => {
 });
 
 submitButton.addEventListener("click", () => { 
-    if (!!bookingId.value && !!bookingType.value && !!bookingCar.value && !!bookingStartDate.value && !!bookingEndDate.value) {
-        if (bookingStartDate.value < bookingEndDate.value) {
-            if (bookingStartDate.value >= new Date().toISOString().split("T")[0]) {
+    if (!!bookingId.value && !!bookingType.value && !!bookingCar.value) {
                 if (carTypeCheckbox.checked) {
                     const booking = {
                         id: bookingId.value,
@@ -138,8 +198,7 @@ submitButton.addEventListener("click", () => {
                             name: bookingCar.value,
                             type: "Large Car"
                         },
-                        startDate: bookingStartDate.value,
-                        endDate: bookingEndDate.value
+                        startDate: Date.now()
                     };
                     largeCarBookings = [...largeCarBookings, booking];
                     helpers.createBooking(booking);
@@ -152,8 +211,7 @@ submitButton.addEventListener("click", () => {
                             name: bookingCar.value,
                             type: "Small Car"
                         },
-                        startDate: bookingStartDate.value,
-                        endDate: bookingEndDate.value
+                        startDate: Date.now()
                     };
                     smallCarBookings = [...smallCarBookings, booking];
                     helpers.createBooking(booking);
@@ -166,31 +224,7 @@ submitButton.addEventListener("click", () => {
                 bookingStartDate.value = "";
                 bookingEndDate.value = "";
                 modalContainer.scrollTo(0, 0);
-            } else {
-                const startDateContainerMessage = helpers.createError("Start date must be greater or equals to today's date");
-                startDateContainer.appendChild(startDateContainerMessage);
-                setTimeout(() => {
-                    startDateContainerMessage.classList.add("scale-0");
-                    setTimeout(() => {
-                        startDateContainer.removeChild(startDateContainerMessage)
-                    }, 1000);
-                }, 5000);
-            }
-        } else {
-            const startDateContainerMessage = helpers.createError("Start date must be less than end date");
-            const endDateContainerMessage = helpers.createError("End date must be greater than start date");
-            startDateContainer.appendChild(startDateContainerMessage);
-            endDateContainer.appendChild(endDateContainerMessage);
-            setTimeout(() => {
-                startDateContainerMessage.classList.add("scale-0");
-                endDateContainerMessage.classList.add("scale-0");
-                setTimeout(() => {
-                    startDateContainer.removeChild(startDateContainerMessage)
-                    endDateContainer.removeChild(endDateContainerMessage);
-                }, 1000);
-            }, 5000);
-        }
-    }
+            } 
     else {
         if (!bookingType.value) {
             const bookingTypeContainerMessage = helpers.createError("Booking Type is required");
