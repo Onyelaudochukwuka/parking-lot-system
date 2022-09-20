@@ -139,9 +139,12 @@ helpers.createBooking = ({ id, type, status, car, startDate, endDate }) => {
             }
 <span class="text-[10px]">${car.type}</span></span>
                         </p>
-                        <p class="self-start basis-1/6 align-middle my-auto min-w-max">${moment(startDate).fromNow()}</p>
+                        <p class="self-start align-middle my-auto min-w-max">${moment(startDate).fromNow()}</p>
+                        <button><svg class="w-6 h-6" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 512 512">
+  <path d="M256,0C114.844,0,0,114.844,0,256s114.844,256,256,256s256-114.844,256-256S397.156,0,256,0z M358.625,313.375  c12.5,12.492,12.5,32.758,0,45.25C352.383,364.875,344.188,368,336,368s-16.383-3.125-22.625-9.375L256,301.25l-57.375,57.375  C192.383,364.875,184.188,368,176,368s-16.383-3.125-22.625-9.375c-12.5-12.492-12.5-32.758,0-45.25L210.75,256l-57.375-57.375  c-12.5-12.492-12.5-32.758,0-45.25c12.484-12.5,32.766-12.5,45.25,0L256,210.75l57.375-57.375c12.484-12.5,32.766-12.5,45.25,0  c12.5,12.492,12.5,32.758,0,45.25L301.25,256L358.625,313.375z"/>
+</svg>
+</button>
     ` 
-        console.log("change")
     }, 3000);
     tableContainer.appendChild(div);
 };
@@ -173,10 +176,34 @@ const defaultData = [{
     status: "Processing",
     car: {
         name: "Hyundai 2022",
-        type: "Small Car"
+        type: "Large Car"
     },
-    startDate: Date.now()
-}]
+    startDate: (Date.now() - 1000 * 60 * 60 * 7),
+},
+    {
+        id: "LXX65-2022",
+        type: "Car Rental",
+        status: "Coming Soon",
+        car: {
+            name: "Toyota 2022",
+            type: "Small Car"
+        },
+        startDate: (Date.now() - 1000 * 60 * 60 * 5),
+    },
+    {
+        id: "HJF92-2022",
+        type: "Parking Space",
+        status: "Secured",
+        car: {
+            name: "Toyota 2022",
+            type: "Small Car"
+        },
+        startDate: (Date.now() - 1000 * 60 * 60 * 3),
+    }
+]
+window.addEventListener("load", () => {
+    defaultData.forEach((data) => helpers.createBooking(data));
+});
 bookButton.addEventListener("click", () => {
     modal.classList.toggle("scale-100");
     modal.classList.toggle("scale-0");
