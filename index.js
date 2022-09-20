@@ -50,7 +50,6 @@ helpers.createBooking = ({ id, type, status, car, startDate, endDate }) => {
     });
     pricePayment.addEventListener('click', () => {
         priceModal.classList.toggle('scale-100');
-        console.log(div.attributes.id);
     });
     div.className = "w-full shadow-lg overflow-x-scroll gap-6 shadow-gray-300/25 h-auto py-6 flex justify-between items-center rounded-md lg:text-sm text-xs px-6 text-gray-600";
     div.innerHTML = `
