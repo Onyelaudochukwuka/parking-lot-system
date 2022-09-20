@@ -191,8 +191,7 @@
                         <p class="self-start basis-1/6 min-w-max">Status</p>
                         <p class="self-start basis-1/6 min-w-max">Type</p>
                         <p class="self-start basis-1/6 min-w-max">Car</p>
-                        <p class="self-start basis-1/6 min-w-max">Start Date</p>
-                        <p class="self-start basis-1/6 min-w-max">End Date</p>
+                        <p class="self-start basis-1/6 min-w-max">Time Elapsed</p>
                     </div>
                     <div
                         class="w-full shadow-lg overflow-x-scroll gap-6 shadow-gray-300/25 h-auto py-6 flex justify-between items-center rounded-md lg:text-sm text-xs px-6 text-gray-600">
@@ -228,8 +227,7 @@
                             </svg>
                                 <span class="text-[10px]">Large Car</span></span>
                         </p>
-                        <p class="self-start basis-1/6 align-middle my-auto min-w-max">2022-09-16</p>
-                        <p class="self-start basis-1/6 align-middle my-auto min-w-max">2022-10-5</p>
+                        <p class="self-start basis-1/6 align-middle my-auto min-w-max">5 hours</p>
                     </div>
                     <div
                         class="w-full shadow-lg overflow-x-scroll gap-6 shadow-gray-300/25 h-auto py-6 flex justify-between items-center rounded-md lg:text-sm text-xs text-gray-600 px-6">
@@ -256,8 +254,7 @@
                             </svg>
 <span class="text-[10px]">Small Car</span></span>
                         </p>
-                        <p class="self-start basis-1/6 align-middle min-w-max my-auto">2022-09-16</p>
-                        <p class="self-start basis-1/6 align-middle min-w-max my-auto">2022-10-15</p>
+                        <p class="self-start basis-1/6 align-middle min-w-max my-auto">3 hours</p>
                     </div>
                     <div
                         class="w-full shadow-lg overflow-x-scroll gap-6 shadow-gray-300/25 h-auto py-6 flex justify-between items-center rounded-md lg:text-sm text-xs text-gray-600 px-6">
@@ -285,8 +282,8 @@
                                 </svg>
                                 <span class="text-[10px]">Small Car</span></span>
                         </p>
-                        <p class="self-start basis-1/6 min-w-max align-middle my-auto">2022-09-16</p>
-                        <p class="self-start basis-1/6 min-w-max align-middle my-auto">2022-10-8</p>
+                        
+                        <p class="self-start basis-1/6 min-w-max align-middle my-auto">5 hours</p>
                     </div>
                 </section>
                 <div data-element="modal" class="inset-0 w-full h-full fixed z-50 scale-0 transition-transform duration-500 ease-in bg-black/40 flex items-center justify-center">
@@ -333,22 +330,6 @@
                                             <span>Large car</span>
                                         </label>
                                 </label>
-                                <label class="flex flex-col gap-2" data-element="start-date-container">
-                                    <span class="text-sm">Start Date</span>
-                                    <input type="date"
-                                    id="booking-start-date"
-                                        class="border border-gray-300 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-primary"
-                                        placeholder="Enter Start Date" />
-                                </label>
-                                <label class="flex flex-col gap-2" data-element="end-date-container"> 
-                                    <span class="text-sm">End Date</span>
-                                    <input type="date"
-                                    id="booking-end-date"
-                                    class="border border-gray-300 rounded-sm px-3 py-2 text-sm focus:outline-none focus:border-primary"
-                                        placeholder="Enter End Date"
-  
-                                     />
-                                </label>
                                 <button data-element="submit-button" class="w-full bg-primary hover:bg-blue-600 transition-colors duration-500 ease-in text-white font-bold text-lg py-3 rounded-md my-6">Submit Booking</button>
                         </div>
 
@@ -357,9 +338,8 @@
             </div>
         </div>
     </section>
-    <script src="./index.js">
-
-    </script>
+    <script src="./index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
 </body>
 
 </html>
